@@ -6,8 +6,7 @@
 import sys
 
 
-def add_password() -> None:
-    print("add password")
+import add_password
 
 
 def search_password() -> None:
@@ -33,14 +32,13 @@ def help() -> None:
 
 
 def handle_command(command: str) -> None:
-    """Handle command"""
     lower_command = command.lower()
     if lower_command in ("exit", "quit", "q"):
         print("Exiting.")
         sys.exit(0)
 
     if lower_command in ("add", "a"):
-        add_password()
+        add_password.add_password()
         return
 
     if lower_command in ("search", "s"):
