@@ -15,8 +15,14 @@ class Database():
     Base class representing a sqlite3 database object.
     Derived classes will extend it when instantiated.
     """
-    def __init__(self, database_dir: Path = DEFAULT_DATABASE_PATH):
-        self.database_dir = database_dir
+    def __init__(self, database_dir: Path = None):
+        """
+        Initialise an sqlite3 database for use.
+
+        Args:
+            database_dir (Path): Path to use for storing database files.
+        """
+        self.database_dir = DEFAULT_DATABASE_PATH if database_dir is None else database_dir
         self.database_name = None
         self.database_file_path = None
         self.sqlite_connection = None
