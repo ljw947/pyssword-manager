@@ -5,24 +5,27 @@
 
 import sys
 
-
 # local imports
-import add_password
+from pyssword_lib import add_password, account
 
 
 def search_password() -> None:
+    """TODO: search for a password"""
     print("search password")
 
 
 def delete_password() -> None:
+    """TODO: delete a password"""
     print("delete password")
 
 
 def list_password() -> None:
+    """TODO: list passwords"""
     print("list password")
 
 
-def help() -> None:
+def print_help() -> None:
+    """Print help menu"""
     print("Pyssword Manager")
     print("Available options:")
     print("     add / a:        add a password")
@@ -33,6 +36,7 @@ def help() -> None:
 
 
 def handle_command(command: str) -> None:
+    """Handle command on CLI"""
     lower_command = command.lower()
     if lower_command in ("exit", "quit", "q"):
         print("Exiting.")
@@ -55,15 +59,22 @@ def handle_command(command: str) -> None:
         return
 
     if lower_command in ("help", "h"):
-        help()
+        print_help()
         return
 
     print("Command not recognised. Type help or h for help menu.")
     return
 
 
-def main():
+def main() -> None:
+    """Main function, controls logic flow of application."""
     print("Pyssword Manager")
+    accounts = account.Accounts()
+
+    accounts.add_table()
+    accounts.add_value()
+    accounts.get_table()
+
     while True:
         command = input("Enter command: ")
         handle_command(command)
